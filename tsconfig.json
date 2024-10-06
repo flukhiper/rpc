@@ -10,9 +10,11 @@
 
     // Bundler mode
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+    // "allowImportingTsExtensions": true,
+    "allowImportingTsExtensions": false,
     "verbatimModuleSyntax": true,
-    "noEmit": true,
+    // "noEmit": true,
+    "noEmit": false,
 
     // Best practices
     "strict": true,
@@ -22,6 +24,10 @@
     // Some stricter flags (disabled by default)
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false
-  }
+    "noPropertyAccessFromIndexSignature": false,
+
+    "outDir": "dist"           // Specify the output directory
+  },
+  "include": ["src/**/*.ts"],    // Include all .ts files in the src directory
+  "exclude": ["node_modules"]     // Exclude the node_modules directory
 }
