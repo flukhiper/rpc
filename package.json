@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "bun run tsx src/index.ts",
-    "dev:client": "bun run src/index_client.ts",
+    "dev:client": "bun run tsx src/indexClient.ts",
     "compile": "bun run tsc",
     "start": "node dist/index.js"
   },
@@ -15,6 +15,7 @@
     "@types/express": "^5.0.0",
     "eslint": "^9.11.1",
     "globals": "^15.10.0",
+    "grpc-tools": "^1.12.4",
     "tsx": "^4.19.1",
     "typescript-eslint": "^8.8.0"
   },

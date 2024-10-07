@@ -131,3 +131,5 @@ client stub ส่ง response ที่ถูก unmarshaled กลับไป
 - **JSON-RPC**: RPC แบบเรียบง่ายที่ encode ในรูปแบบ JSON
 - **gRPC**: RPC framework ที่พัฒนาโดย Google โดยใช้ buffers protocol สำหรับการ serialize และส่งข้อมูล
 - **tRPC**: RPC framework ที่ให้ปัจจัยด้าน type safety ระหว่าง client และ server โดยใช้ TypeScript
+
+# gRPC (Google Remote Procedure Call)

@@ -1,29 +1,32 @@
-import { fileURLToPath } from 'url'
-import { dirname } from 'path'
+/*
+ *
+ * Copyright 2015 gRPC authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
 
-// ES Module workaround for __dirname
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
-const PROTO_PATH = __dirname + '/../protos/helloworld.proto'
-
+import * as messages from './protos/helloworld_pb'
+import * as services from './protos/helloworld_grpc_pb'
 import * as grpc from '@grpc/grpc-js'
-import * as protoLoader from '@grpc/proto-loader'
-const packageDefinition = protoLoader.loadSync(
-  PROTO_PATH,
-  { keepCase: true,
-    longs: String,
-    enums: String,
-    defaults: true,
-    oneofs: true,
-  })
-const hello_proto = grpc.loadPackageDefinition(packageDefinition).helloworld as grpc.GrpcObject
 
 /**
  * Implements the SayHello RPC method.
  */
-function sayHello(call: any, callback: any) {
-  callback(null, { message: 'Hello ' + call.request.name })
+function sayHello(call, callback) {
+  const reply = new messages.HelloReply()
+  reply.setMessage('Hello ' + call.request.getName())
+  callback(null, reply)
 }
 
 /**
@@ -32,8 +35,8 @@ function sayHello(call: any, callback: any) {
  */
 function main() {
   const server = new grpc.Server()
-  server.addService((hello_proto.Greeter as grpc.ServiceClientConstructor).service, { sayHello: sayHello })
-  server.bindAsync('0.0.0.0:50050', grpc.ServerCredentials.createInsecure(), (err, port) => {
+  server.addService(services.GreeterService, { sayHello: sayHello })
+  server.bindAsync('0.0.0.0:50051', grpc.ServerCredentials.createInsecure(), (err, port) => {
     if (err != null) {
       return console.error(err)
     }
