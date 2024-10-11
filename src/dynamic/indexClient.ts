@@ -1,5 +1,7 @@
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
+import * as grpc from '@grpc/grpc-js'
+import * as protoLoader from '@grpc/proto-loader'
 
 // ES Module workaround for __dirname
 const __filename = fileURLToPath(import.meta.url)
@@ -7,8 +9,6 @@ const __dirname = dirname(__filename)
 
 const PROTO_PATH = __dirname + '/../../protos/helloworld.proto'
 
-import * as grpc from '@grpc/grpc-js'
-import * as protoLoader from '@grpc/proto-loader'
 const packageDefinition = protoLoader.loadSync(
   PROTO_PATH,
   { keepCase: true,

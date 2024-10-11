@@ -146,3 +146,11 @@ client stub ส่ง response ที่ถูก unmarshaled กลับไป
 - **tRPC**: RPC framework ที่ให้ปัจจัยด้าน type safety ระหว่าง client และ server โดยใช้ TypeScript
 
 # gRPC (Google Remote Procedure Call)
+RPC framework ที่พัฒนาโดย Google โดยมีการปรับปรุงจาก RPC แบบดั่งเดิม ทำให้มีประสิทธิภาพมากขึ้น scale ได้ดีขึ้น และเหมาะสมกับ cloud-native applications มากขึ้น
+
+## How gRPC Works
+1. **Protocol Buffers (Protobuf)**: gRPC ใช้ Protobuf เป็น Interface Definition Language (IDL) สำหรับการกำหนดข้อตกลงของ methods และ data format ซึ่งเป็นรูปแบบการ serialize แบบ binary ทำให้มีขนาดเล็กลงและรวดเร็วกว่าเมื่อเทียบกับ format อื่น ๆ เช่น JSON หรือ XML
+2. **HTTP/2 Protocol**: gRPC ทำงานบน HTTP/2 ซึ่งมีข้อดีตามนี้
+    - **Multiplexing**: สามารถส่งและรับหลาย requst/response โดยไม่การบล็อกกัน
+    - **Header compression**: HTTP/2 ใช้การบีบอัด header แบบ HPACK เพื่อลด overhead ทำให้การสื่อสารเร็วขึ้น
+    - **Bi-directional streaming**: รองรับการสื่อสารแบบ full-duplex คือ client และ server สามารถส่งข้อความหากันได้อย่างอิสระ

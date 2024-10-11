@@ -4,7 +4,10 @@
   "type": "module",
   "scripts": {
     "dev": "bun run tsx src/index.ts",
-    "dev:client": "bun run tsx src/indexClient.ts",
+    "dev:dynamic": "bun run tsx src/dynamic/index.ts",
+    "dev:dynamic:client": "bun run tsx src/dynamic/indexClient.ts",
+    "dev:stream:server": "bun run tsx src/serverSideStreaming/index.ts",
+    "dev:stream:server:client": "bun run tsx src/serverSideStreaming/indexClient.ts",
     "compile": "bun run tsc",
     "start": "node dist/index.js"
   },

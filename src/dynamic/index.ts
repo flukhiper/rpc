@@ -1,5 +1,7 @@
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
+import * as grpc from '@grpc/grpc-js'
+import * as protoLoader from '@grpc/proto-loader'
 
 // ES Module workaround for __dirname
 const __filename = fileURLToPath(import.meta.url)
@@ -7,8 +9,6 @@ const __dirname = dirname(__filename)
 
 const PROTO_PATH = __dirname + '/../../protos/helloworld.proto'
 
-import * as grpc from '@grpc/grpc-js'
-import * as protoLoader from '@grpc/proto-loader'
 const packageDefinition = protoLoader.loadSync(
   PROTO_PATH,
   { keepCase: true,
@@ -23,7 +23,7 @@ const hello_proto = grpc.loadPackageDefinition(packageDefinition).helloworld as 
  * Implements the SayHello RPC method.
  */
 function sayHello(call: any, callback: any) {
-  callback(null, { message: 'Hello ' + call.request.name })
+  callback(null, { message: 'こんばんは, Hello ' + call.request.name })
 }
 
 /**
