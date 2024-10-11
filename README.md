@@ -54,6 +54,14 @@ bun add -d eslint
 ```bash
 bun run eslint --init
 ```
+> Select these anwsers
+> - How would you like to use ESLint? : **To check syntax and find problems**
+> - What type of modules does your project use? : **JavaScript modules (import/export)**
+> - Which framework does your project use? : **None of these**
+> - Does your project use TypeScript? : **Yes**
+> - Where does your code run? : **Node**
+> - Would you like to install them now? : **Yes**
+> - Which package manager do you want to use? : **bun**
 
 - Install Stylistic ESLint:
 
@@ -73,6 +81,11 @@ export default [
 ```
 
 - Set VSCode ESLint:
+  1. Install **Eslint** extension.
+  2. Press **Ctrl+Shift+P**, which brings up the **Command Palette**. Form here, type ***Preferences: Open Settings(UI)*** and **enter**.
+  3. Type ***Default Formatter*** and set to ***None***
+  4. Press **Ctrl+Shift+P**, which brings up the **Command Palette**. Form here, type ***Preferences: Open Workspace Settings (JSON)*** and **enter**.
+  5. Add editor setting to `.vscode/settings.json`.
 
 ```json
 {
