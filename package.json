@@ -6,8 +6,10 @@
     "dev": "bun run tsx src/index.ts",
     "dev:dynamic": "bun run tsx src/dynamic/index.ts",
     "dev:dynamic:client": "bun run tsx src/dynamic/indexClient.ts",
-    "dev:stream:server": "bun run tsx src/serverSideStreaming/index.ts",
-    "dev:stream:server:client": "bun run tsx src/serverSideStreaming/indexClient.ts",
+    "dev:stream-server": "bun run tsx src/serverSideStreaming/index.ts",
+    "dev:stream-server:client": "bun run tsx src/serverSideStreaming/indexClient.ts",
+    "dev:stream-client": "bun run tsx src/clientSideStreaming/index.ts",
+    "dev:stream-client:client": "bun run tsx src/clientSideStreaming/indexClient.ts",
     "compile": "bun run tsc",
     "start": "node dist/index.js"
   },
