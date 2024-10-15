@@ -144,3 +144,15 @@ client stub ส่ง response ที่ถูก unmarshaled กลับไป
 - **JSON-RPC**: RPC แบบเรียบง่ายที่ encode ในรูปแบบ JSON
 - **gRPC**: RPC framework ที่พัฒนาโดย Google โดยใช้ buffers protocol สำหรับการ serialize และส่งข้อมูล
 - **tRPC**: RPC framework ที่ให้ปัจจัยด้าน type safety ระหว่าง client และ server โดยใช้ TypeScript
+
+# tRPC
+tRPC (TypeScript Remote Procedure Call) เป็น framework ที่ช่วยให้สามารถสร้าง  fully type-safe API ได้ทั้งในฝั่ง server และ client ซึ่งหมายความว่า server และ client สามารถใช้ type ประเภทเดียวกันโดยไม่มี overhead เพิ่มเติม
+
+## How tRPC Works
+### Server:
+- กำหนด "procedures" ในฝั่ง server โดยแต่ละ procedure สามารถเป็น query (สำหรับอ่านข้อมูล) หรือ mutation (สำหรับเปลี่ยนแปลงข้อมูล)
+- procedures ใช้ input validation schemas เพื่อ validate ข้อมูลที่มาจากฝั่ง client
+- กำหนด router ที่รวม procedures ทั้งหมดแล้ว expose router ผ่าน HTTP endpoint (เช่น Express.js เป็นต้น)
+
+### Client:
+- client เรียกใช้ procedures ที่ฝั่ง server โดยใช้ client library ของ tRPC โดยที่ใช้ type ที่ define ไว้ที่ server
